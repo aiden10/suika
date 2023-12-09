@@ -1,0 +1,8 @@
+Dropping fruits on same fruit, prioritizing clear fruits, else left or right depending on fruit:
+Score: 1784
+Score: 1316
+Score: 1170
+Score: 1504
+Score: 1852
+Score: 1113.4
+Score: 1538.25
