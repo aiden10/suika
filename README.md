@@ -1,8 +1,7 @@
 # suika
-attempt to create a bot for [suikagame.com](suikagame.com)
-
-[suika gameplay.mp4](..%2F..%2FDownloads%2Fsuika%20gameplay.mp4)
-
+attempt to create a bot for [suikagame.com](suikagame.com)\
+\
+![ezgif com-video-to-gif](https://github.com/aiden10/suika/assets/51337166/00ab5085-a71d-455e-b6bc-52cdfe563dd9)
 # Scores*
 ## First Version:
 **Dropping fruits on same fruit, prioritizing clear fruits, else left or right depending on fruit**\
