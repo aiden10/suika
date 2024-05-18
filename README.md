@@ -9,3 +9,5 @@ Average score: 1366\
 Lowest score: 842\
 Highest score: 2212\
 <sup>*These values were calculated from 72 games and scores are approximate</sup>
+
+Plan to try using a computer vision API next
