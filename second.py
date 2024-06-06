@@ -9,6 +9,9 @@ from dotenv import load_dotenv
 import numpy as np
 import cv2
 
+SCORE_MULT = 7.325
+END_COLOR = (25, 21, 3)
+click_count = 0
 CURRENT_DIR = os.getcwd()
 screenshots_folder = os.path.join(CURRENT_DIR, 'screenshots')
 PATH = os.path.join(screenshots_folder, 'screenshot.png')
@@ -16,15 +19,32 @@ load_dotenv()
 API_KEY = os.getenv('API_KEY')
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-pro-vision')
-config = genai.types.GenerationConfig(
-    top_k= 40,
-    temperature=1
-)
+safety_config = [
+    {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "threshold": "BLOCK_NONE"
+    },
+    
+    {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "threshold": "BLOCK_NONE"
+    },
+
+    {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "threshold": "BLOCK_NONE"
+    },
+    
+    {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "threshold": "BLOCK_NONE"
+    },
+
+]
 
 def parse_response(response):
     response = response.replace('`', "").strip()
     response = response.replace('json', "")
-    print(response)
     data = json.loads(response)
     data = json.loads(response)
     X = data["X"]
@@ -33,9 +53,21 @@ def parse_response(response):
     return float(X), float(Y), str(thoughts)
 
 def perform_actions(x, y):
-    pyautogui.moveTo((x * 48) + 720, (y * 77.5) + 280)    
+    global click_count
+    click_count += 1
+    pyautogui.moveTo((x * 48) + 720, (y * 10) + 280)    
     pyautogui.click()
-    time.sleep(1.5)
+    time.sleep(1)
+
+def restart():
+    global click_count
+    print('Game Over')
+    with open("scores.txt", "a") as f:
+        f.write(f"Score: {click_count * SCORE_MULT}\n")
+
+    click_count = 0
+    pyautogui.hotkey('ctrl', 'r')
+    time.sleep(3)
 
 def delete_screenshots():
     for filename in os.listdir(screenshots_folder):
@@ -82,6 +114,8 @@ def main():
     if not os.path.isfile(PATH):
         raise SystemExit("No screenshot found")
     image = Image.open(PATH)
+    if image.getpixel((50, 20)) == END_COLOR:
+        restart()
 
     prompt = f"""
                 Based on what you see in the screenshot, I would like you to play Suika Game to the best of your abilities. Suika Game, in case you
@@ -106,12 +140,14 @@ def main():
                 """ 
 
     print('generating response...')
-    response = model.generate_content([prompt, image], generation_config=config)
+    response = model.generate_content([prompt, image], safety_settings=safety_config)
 
     # after a response is recieved
     x, y, thoughts = parse_response(response.text)
-    print(thoughts)
     perform_actions(x, y)
+    print()
+    print(thoughts)
+    print()
     delete_screenshots()
     return
 
