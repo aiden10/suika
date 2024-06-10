@@ -1,4 +1,17 @@
-# Suika Game Bot
+# Bots
+
+## Random Bot (Control)
+![suika-Trim-ezgif com-video-to-gif-converter](https://github.com/aiden10/suika/assets/51337166/28df4511-fffa-43a2-964a-1887e4af2610)
+### Strategy
+Drops fruit at a random position.
+### Stats
+- Average score: 1020
+- Lowest score: 658
+- Highest score: 1193
+  
+<sup>*These values were calculated from 8 games and scores are approximate</sup>
+
+
 ## Basic Algorithm Bot
 ![ezgif com-video-to-gif](https://github.com/aiden10/suika/assets/51337166/00ab5085-a71d-455e-b6bc-52cdfe563dd9)
 ### Strategy
@@ -9,6 +22,7 @@ Looks at held fruit and looks for the highest matching fruit. If it exists, the 
 - Highest score: 2212
   
 <sup>*These values were calculated from 72 games and scores are approximate</sup>
+
 
 ## Gemini Pro Vision Bot
 ![Recording2024-06-06174256-Trim-ezgif com-video-to-gif-converter(1)(1)(1)](https://github.com/aiden10/suika/assets/51337166/ef995226-72fb-4358-9272-cc7097f7f94a)
