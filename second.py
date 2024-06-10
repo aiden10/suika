@@ -1,3 +1,4 @@
+# Bot which uses external computer vision API to determine where to place fruit 
 import pyautogui
 import os
 import shutil
@@ -62,7 +63,7 @@ def perform_actions(x, y):
 def restart():
     global click_count
     print('Game Over')
-    with open("scores.txt", "a") as f:
+    with open("scoresB.txt", "a") as f:
         f.write(f"Score: {click_count * SCORE_MULT}\n")
 
     click_count = 0

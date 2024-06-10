@@ -3,7 +3,7 @@ scores = []
 total = 0
 average = 0
 
-with open('scores.txt') as file:
+with open('scoresC.txt') as file:
     for line in file:
         lines.append(line.strip().split(':')[1:])
 file.close()
@@ -15,6 +15,7 @@ for score in lines:
     total += score
     scores.append(score)
 average = total / len(lines)
-print(average)
-print(min(scores))
-print(max(scores))
+print(f'Games Played: {len(scores) + 1}')
+print(f'Average: {average}')
+print(f'Lowest: {min(scores)}')
+print(f'Highest: {max(scores)}')

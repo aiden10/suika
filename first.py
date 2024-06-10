@@ -1,3 +1,4 @@
+# Bot which attempts to 'intelligently' determine where to place fruit
 import time
 import pyautogui
 import random
@@ -142,7 +143,7 @@ while True:
 
     if game_over:
         print("Game over")
-        with open("scores.txt", "a") as f:
+        with open("scoresA.txt", "a") as f:
             f.write(f"Score: {click_count * SCORE_MULT}\n")
 
         pyautogui.click(int(1920 / 2), 800)
