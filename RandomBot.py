@@ -35,14 +35,13 @@ def restart():
     global click_count
     print('Game Over')
     with open("scoresC.txt", "a") as f:
-        f.write(f"Score: {click_count * SCORE_MULT}\n")
+        f.write(f"Score: {(click_count * SCORE_MULT) - 30}\n")
 
     click_count = 0
     pyautogui.hotkey('ctrl', 'r')
     time.sleep(3)
 
 while True:
-    time.sleep(1)
     delete_screenshots()
     screenshot(left=710, upper=185, right=1200, lower=960)
 
@@ -56,3 +55,7 @@ while True:
     randomX = random.randint(720, 1200)
     pyautogui.click((randomX, 400)) # Y value doesn't really matter
     click_count += 1
+    print(click_count)
+    if click_count > 400:
+        pyautogui.hotkey('ctrl', 'r')
+        click_count = 0
