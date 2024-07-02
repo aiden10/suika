@@ -5,11 +5,11 @@
 ### Strategy
 Drops fruit at a random position.
 ### Stats
-- Average score: 1020
+- Average score: 1055
 - Lowest score: 658
-- Highest score: 1193
+- Highest score: 1197
   
-<sup>*These values were calculated from 8 games and scores are approximate</sup>
+<sup>*These values were calculated from 20 games and scores are approximate</sup>
 
 
 ## Basic Algorithm Bot
