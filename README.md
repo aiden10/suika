@@ -11,7 +11,7 @@ Drops fruit at a random position.
   
 <sup>*These values were calculated from 20 games and scores are approximate</sup>
 
-## OpenCV + Graoh Bot
+## OpenCV + Graph Bot
 ![suikacv-Trim-ezgif com-video-to-gif-converter](https://github.com/aiden10/suika/assets/51337166/c7b1d9f7-e41a-4c4a-a30a-31beca705062)
 ### Strategy
 Uses OpenCV to identify the fruits and detect which ones are touching. The connected fruits are then placed into a graph and I traverse it to find the longest fruit chain and determine where to drop the fruit. Each chain is given a score based on the value difference between the adjacent fruits. The fruit identification still needs to be improved and the algorithmn for calculating the chain scores could also be improved.
